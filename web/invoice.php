@@ -2,7 +2,7 @@
 <html>
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../vendor/codeplex/phpexcel/PHPExcel.php');
+require_once __DIR__ . '/../vendor/codeplex/phpexcel/PHPExcel.php';
 
 
  Bigcommerce::configure(array(
@@ -289,7 +289,7 @@ foreach ($products as $product) {
 	$product_all_data = Bigcommerce::getProduct($product_id);	
 	if (!empty($product_all_data->primary_image->thumbnail_url)) {
 $item_url = $product_all_data->primary_image->thumbnail_url;
-$img_name = 'C:\wamp64\www\bigcommerceDemo\Get_by_Filter\invoice_images\\'."ID".$product_id.".jpg";
+$img_name = '/invoice_images/'."ID".$product_id.".jpg";
 file_put_contents($img_name, file_get_contents($item_url));
 	}
 	else{
@@ -370,7 +370,7 @@ $objPHPExcel->getActiveSheet()->getStyle('I'.$next_lines_3)->getFont()->setBold(
 //END of THE ORDER ITEMS
 $objWriter->save("Invoice ".$xl_order_id.".xlsx");
 
-$filename = 'http://localhost/bigcommerceDemo/Get_by_Filter/'."Invoice ".$xl_order_id.".xlsx";   
+$filename = "Invoice ".$xl_order_id.".xlsx";
 
 echo '
  <body>
@@ -395,26 +395,7 @@ echo '
 																}
 
 }//end function
-/*
-	    $myfile = "Orders2.xlsx";//file orders IDs
-		$excelReader = PHPExcel_IOFactory::createReaderForFile($myfile);
-		$excelObj = $excelReader->load($myfile);
-		$worksheet = $excelObj->getSheet(0);
-		$lastRow = $worksheet->getHighestRow();
 
-//WARNING!Put how many rows you have in file!!!
-//$progressBar = new \ProgressBar\Manager(0,3);
-
-		for ($row = 2; $row <= $lastRow; $row++) 
-{	
-//  	$progressBar->update($row);
-
-		$xl_order_id = $worksheet->getCell('A'.$row)->getValue();
-//call the function
-		get_order_products  ($xl_order_id,
-                            $row);
-}								
-*/
 $xl_order_id = trim($_REQUEST['xl_order_id']);
 get_order_products  ($xl_order_id);
 
