@@ -2,8 +2,7 @@
 <html>
 <?php
 require('../vendor/autoload.php');
-require('codeplex/phpexcel/PHPExcel.php');
-//require('scripting2.php');
+require('../vendor/codeplex/phpexcel/PHPExcel.php');
 
  Bigcommerce::configure(array(
 
