@@ -1,8 +1,9 @@
  <!DOCTYPE html>
 <html>
 <?php
-require('../vendor/autoload.php');
-require('../vendor/codeplex/phpexcel/PHPExcel.php');
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/codeplex/phpexcel/PHPExcel.php');
+
 
  Bigcommerce::configure(array(
 
